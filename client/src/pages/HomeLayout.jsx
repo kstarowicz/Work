@@ -1,8 +1,8 @@
-import React from 'react'
+//import React from 'react'
 
 const HomeLayout = () => {
   return (
-    <div>HomeLayout</div>
+    <h1>HomeLayout</h1>
   )
 }
 
