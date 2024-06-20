@@ -1,8 +1,13 @@
+import {Link} from 'react-router-dom';
+
 //import React from 'react'
 
 const Login = () => {
   return (
-    <h1>Login Page</h1>
+    <div>
+      <h1>Login Page</h1>;
+      <Link to='/register'>Register Page</Link>
+    </div>
   )
 }
 
