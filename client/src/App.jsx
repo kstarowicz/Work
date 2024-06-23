@@ -7,6 +7,7 @@ import {
   DashboardLayout,
   Error,
 } from './pages';
+import './assets/css/index.css'
 //import HomeLayout from './pages/HomeLayout';
 //import React from 'react'
 
