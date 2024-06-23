@@ -1,26 +1,20 @@
 import styled from 'styled-components';
+import Wrapper from '../assets/wrappers/LandingPage'
+import main from '../assets/images/main.svg'
+import logo from '../assets/images/logo.svg'
+
 //import React from 'react'
 
 
 const Landing = () => {
   return (
     <Wrapper>
-
-      <h1>Landing Page</h1>
-      <div className="content">some content</div>
+      <nav>
+        <img src={logo} alt="work" className='logo' />
+      </nav>
     </Wrapper>
-  )
-}
+  );
+};
 
-const Wrapper =styled.div`
-  background: red;
-  h1{
-    color:white;
-  }
-  .content{
-    
-
-  }
-`;
 
 export default Landing
