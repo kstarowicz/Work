@@ -10,6 +10,26 @@ const Login = () => {
      <form className='form'>
       <Logo />
        <h4>login </h4>
+       <FormRow type='email' name='email'
+       defaultValue='karolina@karolina.com' />
+
+       <FormRow type='passeord' name='passeord'
+       defaultValue='secret123' />
+
+       <button type='submit' className='btn btn-block'>
+        submit
+       </button>
+
+       <button type='button' className='btn btn-block'>
+        explore the app
+       </button>
+
+       <p>
+          Not a member yet?
+          <Link to='/register' className='member-btn'>
+            Register
+          </Link>
+        </p>
     </form>
     </Wrapper>
   )
