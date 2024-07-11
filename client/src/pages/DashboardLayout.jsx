@@ -3,24 +3,19 @@ import Wrapper from "../assets/wrappers/Dashboard"
 import { BigSidebar, Navbar, SmallSidebar } from "../components"
 import { createContext, useContext, useState } from "react"
 
-
-
-
 const DashboardContext = createContext() 
 
-
-
-const DashboardLayout = (isDarkThemeEnabled) => {
+const DashboardLayout = ({isDarkThemeEnabled}) => {
   const user = {name:'karolina'}
   const [showSidebar,setShowSidebar] = useState(false);
   const [isDarkTheme,setIsDarkTheme] = useState(isDarkThemeEnabled);
 
 
   const toggleDarkTheme = () => {
-    const newDarkThem = !isDarkTheme
-    setIsDarkTheme(newDarkThem)
-    document.body.classList.toggle('dark-theme', newDarkThem)
-    localStorage.setItem('darkTheme', newDarkThem)
+    const newDarkThem = !isDarkTheme;
+    setIsDarkTheme(newDarkThem);
+    document.body.classList.toggle('dark-theme', newDarkThem);
+    localStorage.setItem('darkTheme', newDarkThem);
   };
 
   const toggleSidebar = () => {
