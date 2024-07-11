@@ -1,1 +1,11 @@
-console.log('server is working...');
+import { log } from 'console';
+import express from 'express'
+const app = express()
+
+app.get('/', (req,res) => {
+    res.send('Hello World');
+});
+
+app.listen(5100, () => {
+    console.log('server running');
+})
