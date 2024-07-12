@@ -1,6 +1,9 @@
 import { log } from 'console';
 import express from 'express'
 const app = express()
+import morgan from 'morgan';
+
+app.use(morgan('dev'));
 
 app.use(express.json());
 
