@@ -29,7 +29,9 @@ app.post('/', (req,res) =>{
 })
 
 
-app.get('/api/v1/jobs')
+app.get('/api/v1/jobs', (req, res) => {
+  res.status(200).json({ jobs });
+});
 
 const port = process.env.PORT || 5100
 
