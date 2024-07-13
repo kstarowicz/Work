@@ -29,8 +29,18 @@ app.post('/', (req,res) =>{
 })
 
 
+//Get all jobs
 app.get('/api/v1/jobs', (req, res) => {
   res.status(200).json({ jobs });
+});
+
+// Create jobs
+
+app.post('/api/v1/jobs', (req, res) => {
+    const { company, position } = req.body;
+  if (!company || !position) {
+    return res.status(400).json({ msg: 'please provide company and position' });
+  }
 });
 
 const port = process.env.PORT || 5100
