@@ -5,6 +5,10 @@ const app = express()
 import morgan from 'morgan';
 
 
+//routers
+import jobRouter from './routers/jobRouter.js';
+
+
 if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'));
 }
@@ -22,27 +26,28 @@ app.post('/', (req,res) =>{
     res.json({message:'data received', data:req.body })
 })
 
+app.use('/api/v1/jobs', jobRouter);
 
-//Get all jobs
-app.get('/api/v1/jobs', );
-
-
-// Create jobs
-
-app.post('/api/v1/jobs', );
+// Get all jobs
+// app.get('/api/v1/jobs', );
 
 
-// GET SINGLE JOB
+//  Create jobs
 
-app.get('/api/v1/jobs/:id', );
+// app.post('/api/v1/jobs', );
 
-// EDIT JOB
 
-app.patch('/api/v1/jobs/:id', );
+//  GET SINGLE JOB
 
-// DELETE JOB
+// app.get('/api/v1/jobs/:id', );
 
-app.delete('/api/v1/jobs/:id', );
+//  EDIT JOB
+
+// app.patch('/api/v1/jobs/:id', );
+
+//  DELETE JOB
+
+// app.delete('/api/v1/jobs/:id', );
 
 
 app.use('*', (req, res) => {
