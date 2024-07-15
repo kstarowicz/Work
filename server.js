@@ -3,10 +3,12 @@ dotenv.config();
 import express from 'express'
 const app = express()
 import morgan from 'morgan';
+import mongoose from 'mongoose';
+
 
 
 //routers
-import jobRouter from './routers/jobRouter.js';
+import jobRouter from './routes/jobRouter.js';
 
 
 if(process.env.NODE_ENV === 'development'){
@@ -28,28 +30,6 @@ app.post('/', (req,res) =>{
 
 app.use('/api/v1/jobs', jobRouter);
 
-// Get all jobs
-// app.get('/api/v1/jobs', );
-
-
-//  Create jobs
-
-// app.post('/api/v1/jobs', );
-
-
-//  GET SINGLE JOB
-
-// app.get('/api/v1/jobs/:id', );
-
-//  EDIT JOB
-
-// app.patch('/api/v1/jobs/:id', );
-
-//  DELETE JOB
-
-// app.delete('/api/v1/jobs/:id', );
-
-
 app.use('*', (req, res) => {
   res.status(404).json({ msg: 'not found' });
 });
@@ -59,9 +39,19 @@ app.use((err, req, res, next) => {
   res.status(500).json({ msg: 'something went wrong' });
 });
 
-const port = process.env.PORT || 5100
+const port = process.env.PORT || 5100;
+
+try {
+  await mongoose.connect(process.env.MONGO_URL);
+  app.listen(port, () => {
+    console.log(`server running on PORT ${port}....`);
+  });
+} catch (error) {
+  console.log(error);
+  process.exit(1);
+}
 
 
-app.listen(port, () => {
-    console.log(`server running on PORT ${port}...`);
-})
+
+
+////

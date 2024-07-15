@@ -1,6 +1,6 @@
 import express from 'express';
 import { nanoid } from 'nanoid';
-
+//import jobRouter from './routers/jobRouter.js';
 
 let jobs = [
   { id: nanoid(), company: 'apple', position: 'front-end' },
