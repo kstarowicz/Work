@@ -1,3 +1,4 @@
+import Job from '../models/JobModel.js';
 import express from 'express';
 import { nanoid } from 'nanoid';
 //import jobRouter from './routers/jobRouter.js';
@@ -12,15 +13,9 @@ export const getAllJobs = async (req, res) => {
 };
 
 export const createJob = async (req, res) => {
-    const { company, position } = req.body;
-  if (!company || !position) {
-    res.status(400).json({ msg: 'please provide company and position' });
-    return;
-  }
-  const id = nanoid(10);
-  const job = { id, company, position };
-  jobs.push(job)
-  res.status(201).json({job})
+  const { company, position } = req.body;
+  const job = await Job.create({ company, position })
+  res.status(201).json({ job })
 };
 
 export const getJob = async (req, res) => {
@@ -61,3 +56,13 @@ export const deleteJob = async (req, res) => {
 
   res.status(200).json({ msg: 'job deleted' });
 };
+
+
+
+// if (!company || !position) {
+//     res.status(400).json({ msg: 'please provide company and position' });
+//     return;
+//   }
+//   const id = nanoid(10);
+//   const job = { id, company, position };
+//   jobs.push(job)
