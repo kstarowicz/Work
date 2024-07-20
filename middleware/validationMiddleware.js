@@ -45,13 +45,11 @@ export const validateIdParam = withValidationErrors([
 
 export const validateRegisterInput = withValidationErrors([
   body('name').notEmpty().withMessage('name is required'),
-   body('email')
+  body('email')
     .notEmpty()
     .withMessage('email is required')
     .isEmail()
-    .withMessage('invalid email format'),
-  body('password').notEmpty().withMessage('password is required'),
-]);
+    .withMessage('invalid email format')
     .custom(async (email) => {
       const user = await User.findOne({ email });
       if (user) {
@@ -65,4 +63,13 @@ export const validateRegisterInput = withValidationErrors([
     .withMessage('password must be at least 8 characters long'),
   body('location').notEmpty().withMessage('location is required'),
   body('lastName').notEmpty().withMessage('last name is required'),
+]);
+
+export const validateLoginInput = withValidationErrors([
+  body('email')
+    .notEmpty()
+    .withMessage('email is required')
+    .isEmail()
+    .withMessage('invalid email format'),
+  body('password').notEmpty().withMessage('password is required'),
 ]);
