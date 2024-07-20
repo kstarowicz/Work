@@ -45,11 +45,13 @@ export const validateIdParam = withValidationErrors([
 
 export const validateRegisterInput = withValidationErrors([
   body('name').notEmpty().withMessage('name is required'),
-  body('email')
+   body('email')
     .notEmpty()
     .withMessage('email is required')
     .isEmail()
-    .withMessage('invalid email format')
+    .withMessage('invalid email format'),
+  body('password').notEmpty().withMessage('password is required'),
+]);
     .custom(async (email) => {
       const user = await User.findOne({ email });
       if (user) {
