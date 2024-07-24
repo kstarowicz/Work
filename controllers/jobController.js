@@ -4,14 +4,13 @@ import { NotFoundError } from '../errors/customError.js';
 import express from 'express';
 
 export const getAllJobs = async (req, res) => {
-
-  const jobs = await Job.find({createdBy: req.user.userID});
+  const jobs = await Job.find({ createdBy: req.user.userID });
   res.status(StatusCodes.OK).json({ jobs });
 };
 
 export const createJob = async (req, res) => {
   req.body.createdBy = req.user.userID
-     const job = await Job.create( req.body )
+     const job = await Job.create( req.body.id )
      res.status(StatusCodes.CREATED).json({ job })
 };
 
