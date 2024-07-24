@@ -21,10 +21,10 @@ export const login = async (req, res) => {
 
   const user = await User.findOne({ email: req.body.email });
 
-  const isValidUser = user && await comparePassword(
+  const isValidUser = user && (await comparePassword(
     req.body.password,
     user.password
-);
+));
   if (!isValidUser) throw new UnauthenticatedError('invalid credentials');
 
   const token = createJWT({ userId: user._id, role: user.role });
