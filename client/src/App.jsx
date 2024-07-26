@@ -20,6 +20,7 @@ import { action as loginAction } from './pages/Login';
 //import HomeLayout from './pages/HomeLayout';
 //import React from 'react'
 
+import { loader as dashboardLoader } from './pages/DashboardLayout';
 
 const checkDefaultTheme = () =>{
   const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
@@ -56,8 +57,8 @@ const router = createBrowserRouter([
   },
   {
     path:'dashboard',
-    element: <DashboardLayout isDarkThemeEnabled = 
-    {isDarkThemeEnabled} />,
+    element: <DashboardLayout isDarkThemeEnabled = {isDarkThemeEnabled} />,
+    loader: dashboardLoader,
     children:[
       {
         index:true,
