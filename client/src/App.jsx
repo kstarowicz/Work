@@ -12,8 +12,11 @@ import {
   Profile,
   Admin,
 } from './pages';
+
 import './assets/css/index.css'
+
 import { action as registerAction } from './pages/Register';
+import { action as loginAction } from './pages/Login';
 //import HomeLayout from './pages/HomeLayout';
 //import React from 'react'
 
@@ -49,6 +52,7 @@ const router = createBrowserRouter([
   {
     path:'login',
     element: <Login/>,
+    action: loginAction,
   },
   {
     path:'dashboard',
