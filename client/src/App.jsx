@@ -13,6 +13,7 @@ import {
   Admin,
 } from './pages';
 import './assets/css/index.css'
+import { action as registerAction } from './pages/Register';
 //import HomeLayout from './pages/HomeLayout';
 //import React from 'react'
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
     path:'register',
     element: <Register/>,
+    action:()=> {
+      console.log('hello there');
+     // return null;
+    }
   },
   {
     path:'login',
