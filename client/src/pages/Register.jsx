@@ -2,22 +2,23 @@
 import { Form, redirect, useNavigation, Link} from 'react-router-dom'
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage'
 import { FormRow, Logo } from '../components/';
+import customFetch from '../utils/customFetch'
+import { toast } from 'react-toastify';
 
 
-export const action = async (data) => {
-  console.log(data);
-  return null;
-}
-// export const action = async ({ request }) => {
-//   const formData = await request.formData();
-//   const data = Object.fromEntries(formData);
-//   try {
-//     await customFetch.post('/auth/register', data);
-//     return redirect('/login');
-//   } catch (error) {
-//     return error;
-//   }
-// };
+ export const action = async ({ request }) => {
+   const formData = await request.formData();
+   const data = Object.fromEntries(formData);
+
+   try {
+     await customFetch.post('/auth/register', data);
+     toast.success('Registration successful');
+      return redirect('/login');
+   } catch (error) {
+     toast.error(error?.response?.data?.msg);
+     return error;
+   }
+ };
 
 const Register = () => {
   return (
@@ -44,7 +45,7 @@ const Register = () => {
         />
         <FormRow 
         type='email' 
-        name='name' 
+        name='email' 
         defaultValue='karolina@karolina.com'
         />
         <FormRow 
