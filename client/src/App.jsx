@@ -40,10 +40,11 @@ const router = createBrowserRouter([
       {
     path:'register',
     element: <Register/>,
-    action:()=> {
-      console.log('hello there');
+    action: registerAction,
+    //action:()=> {
+    //  console.log('hello there');
      // return null;
-    }
+    //}
   },
   {
     path:'login',

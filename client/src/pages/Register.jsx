@@ -4,10 +4,20 @@ import Wrapper from '../assets/wrappers/RegisterAndLoginPage'
 import { FormRow, Logo } from '../components/';
 
 
-export const action = async ({ request }) => {
-  const formData = await request.formData();
- 
-};
+export const action = async (data) => {
+  console.log(data);
+  return null;
+}
+// export const action = async ({ request }) => {
+//   const formData = await request.formData();
+//   const data = Object.fromEntries(formData);
+//   try {
+//     await customFetch.post('/auth/register', data);
+//     return redirect('/login');
+//   } catch (error) {
+//     return error;
+//   }
+// };
 
 const Register = () => {
   return (
