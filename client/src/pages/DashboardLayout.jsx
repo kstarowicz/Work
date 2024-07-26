@@ -6,7 +6,7 @@ import { createContext, useContext, useState } from "react"
 
 export const loader = async () => {
   try {
-    const { data } = await customFetch('/users/current-user');
+    const { data } = await customFetch.get('/users/current-user');
     return data;
   } catch (error) {
     return redirect('/');
@@ -17,10 +17,8 @@ const DashboardContext = createContext()
 
 const DashboardLayout = ({ isDarkThemeEnabled }) => {
 
-  const data = useLoaderData();
-  console.log(data);
-
-  const user = {name:'karolina'}
+  const {user} = useLoaderData();
+  
   const [showSidebar,setShowSidebar] = useState(false);
   const [isDarkTheme,setIsDarkTheme] = useState(isDarkThemeEnabled);
 
@@ -57,7 +55,7 @@ const DashboardLayout = ({ isDarkThemeEnabled }) => {
         <div>
           <Navbar/>
           <div className="dashboard-page">
-            <Outlet/>
+            <Outlet context={{ user }}/>
           </div>
         </div>
       </main>
