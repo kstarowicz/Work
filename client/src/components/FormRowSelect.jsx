@@ -24,4 +24,4 @@ const FormRowSelect = ({name, labelText, list, defaultValue=''}) => {
   )
 }
 
-export default FormRowSelect
+export default FormRowSelect;
