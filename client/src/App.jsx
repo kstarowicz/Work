@@ -7,13 +7,13 @@ import {
   DashboardLayout,
   Error,
   AddJob,
-  Status,
+  Stats,
   AllJobs,
   Profile,
   Admin,
 } from './pages';
 
-import './assets/css/index.css'
+//import './assets/css/index.css'
 
 import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
@@ -22,7 +22,7 @@ import { action as loginAction } from './pages/Login';
 
 import { loader as dashboardLoader } from './pages/DashboardLayout';
 import { action as addJobAction } from './pages/AddJob';
-//import { action as allJobsLoader} from './pages/AllJobs';
+import { action as allJobsLoader} from './pages/AllJobs';
 
 const checkDefaultTheme = () =>{
   const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
@@ -68,12 +68,12 @@ const router = createBrowserRouter([
       },
       {
         path:'stats',
-        element:<Status/>
+        element:< Stats />,
       },
             {
         path:'all-jobs',
         element:<AllJobs/>,
-        //loader: allJobsLoader,
+        loader: allJobsLoader,
       },
             {
         path:'profile',
