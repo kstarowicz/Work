@@ -1,4 +1,3 @@
-
 import Job from './Job';
 import Wrapper from '../assets/wrappers/JobsContainer';
 
