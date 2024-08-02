@@ -11,6 +11,7 @@ import {
   AllJobs,
   Profile,
   Admin,
+  EditJob,
 } from './pages';
 
 //import './assets/css/index.css'
@@ -79,10 +80,16 @@ const router = createBrowserRouter([
         path:'profile',
         element:<Profile/>
       },
-            {
+      {
         path:'admin',
         element:<Admin/>
       },
+
+      {
+        path:'edit-job/:id',
+        element:<EditJob/>
+      },
+
     ]
   },
   ],
