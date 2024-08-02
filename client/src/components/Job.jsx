@@ -1,7 +1,8 @@
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
-import { Link, Form } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/Job';
 import JobInfo from './JobInfo';
+import { Form } from 'react-router-dom';
 import day from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 day.extend(advancedFormat);
@@ -37,7 +38,8 @@ const Job = ({
         </div>
 
         <footer className='actions'>
-          <Link to={`../edit-job/${_id}`} className='btn edit-btn'>Edit</Link>
+            <Link className='btn edit-btn'>Edit</Link>
+          
           <Form>
             <button type='submit' className='btn delete-btn'>
               Delete
@@ -50,3 +52,5 @@ const Job = ({
 };
 
 export default Job;
+
+// <Link to={`../edit-job/${_id}`} className='btn edit-btn'>Edit</Link>
