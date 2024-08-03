@@ -12,6 +12,7 @@ import {
   Profile,
   Admin,
   EditJob,
+  
 } from './pages';
 
 //import './assets/css/index.css'
