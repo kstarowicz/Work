@@ -11,7 +11,8 @@ export const loader = async ({params}) => {
    const {data} = await customFetch.get(`/job/${params.id}`)
    return data
  } catch (error) {
-  toast.error(error?.response?.data?.msg)
+  toast.error(error?.response?.data?.msg);
+  return redirect('/dashboard/all-jobs');
  }
 };
 export const action = async () => {
@@ -19,8 +20,8 @@ export const action = async () => {
 };
 
 const EditJob = () => {
-  const params = useParams()
-  console.log(params);
+  const {job} = useLoaderData();
+  console.log(job);
   return <h1>EditJob Page</h1>;
 };
 export default EditJob;
