@@ -8,8 +8,8 @@ const {toggleSidebar, user } = useDashboardContext();
   return (
     <div className="nav-links">
             {links.map((link) => {
-              const {text, path, icon} = link;
-              const {role} = user
+              const { text, path, icon } = link;
+              const {role} = user;
               if(path === 'admin' && role !== 'admin') return;
               return (
               <NavLink 
