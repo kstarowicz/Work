@@ -1,3 +1,4 @@
+import Job from '../models/JobModel.js'
 import { StatusCodes } from 'http-status-codes';
 import User from '../models/UserModel.js';
 import { comparePassword, hashPassword } from '../utils/passwordUtils.js'

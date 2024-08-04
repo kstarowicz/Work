@@ -5,7 +5,6 @@ import express from 'express'
 const app = express()
 import morgan from 'morgan';
 import mongoose from 'mongoose';
-
 import cookieParser from 'cookie-parser';
 
 //import { validateTest } from './middleware/validationMiddleware.js';
@@ -14,6 +13,11 @@ import cookieParser from 'cookie-parser';
 import jobRouter from './routes/jobRouter.js';
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
+
+//publik
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 //middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';

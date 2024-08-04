@@ -1,7 +1,7 @@
 import Job from '../models/JobModel.js';
 import { StatusCodes } from 'http-status-codes';
 import { NotFoundError } from '../errors/customError.js';
-import express from 'express';
+//import express from 'express';
 
 export const getAllJobs = async (req, res) => {
   const jobs = await Job.find({ createdBy: req.user.userId });

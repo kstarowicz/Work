@@ -4,6 +4,7 @@ import { JOB_STATUS, JOB_TYPE } from '../utils/constants.js';
 import mongoose from 'mongoose';
 import Job from '../models/JobModel.js'
 import User from '../models/UserModel.js'
+import { BAD_GATEWAY } from 'http-status-codes';
 
 const withValidationErrors = (validateValues) => {
   return [
@@ -47,6 +48,7 @@ export const validateIdParam = withValidationErrors([
 
     const isAdmin = req.user.role === 'admin'
     const isOwner = req.user.userId === job.createdBy.toString()
+
     if(!isAdmin && !isOwner)
        throw new UnauthorizedError('not authorized to access this route');
 
@@ -96,7 +98,7 @@ export const validateUpdateUserInput = withValidationErrors([
     .custom(async (email, { req }) => {
       const user = await User.findOne({ email });
       if (user && user._id.toString() !== req.user.userId) {
-        throw new Error('email already exists');
+        throw new BadRequestError('email already exists');
       }
     }),
   body('lastName').notEmpty().withMessage('last name is required'),
