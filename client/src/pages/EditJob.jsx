@@ -29,10 +29,11 @@ export const action = async ({request,params}) => {
 };
 
 const EditJob = () => {
-  const {job} = useLoaderData();
+  const { job } = useLoaderData();
   const navigation = useNavigation()
   const isSubmitting = navigation.state === 'submitting'
-  return <Wrapper>
+  return (
+  <Wrapper>
     <Form method='post' className='form'>
       <h4 className='form-title'>edit job</h4>
       <div className='form-center'>
@@ -62,6 +63,7 @@ const EditJob = () => {
         
       </div>
     </Form>
-  </Wrapper>;
+  </Wrapper>
+  );
 };
 export default EditJob;
