@@ -34,7 +34,7 @@ export const updateUser = async (req, res) => {
     await cloudinary.v2.uploader.destroy(updatedUser.avatarPublicId);
   }
   res.status(StatusCodes.OK).json({ msg: 'update user' });
-};
+
 
   res.status(StatusCodes.OK).json({ msg: 'update user' });
 };
