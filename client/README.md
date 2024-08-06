@@ -15,3 +15,7 @@ Narzędzia
 - Mongoose,
 - Axios, 
 - Vite.
+
+
+https://cloudinary.com   -przechowywanie multimediów
+//appName=Project0
