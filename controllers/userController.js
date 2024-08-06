@@ -19,8 +19,8 @@ export const getApplicationStats = async (req, res) => {
 
 export const updateUser = async (req, res) => {
 
-  const obj = { ...req.body };
-  delete obj.password;
+  const newUser = { ...req.body };
+  delete newUser.password;
 
   if (req.file) {
     const response = await cloudinary.v2.uploader.upload(req.file.path);
@@ -28,6 +28,13 @@ export const updateUser = async (req, res) => {
     newUser.avatar = response.secure_url;
     newUser.avatarPublicId = response.public_id;
   }
-  const updatedUser = await User.findByIdAndUpdate(req.user.userId, obj)
+  const updatedUser = await User.findByIdAndUpdate(req.user.userId, newUser);
+
+  if (req.file && updatedUser.avatarPublicId) {
+    await cloudinary.v2.uploader.destroy(updatedUser.avatarPublicId);
+  }
+  res.status(StatusCodes.OK).json({ msg: 'update user' });
+};
+
   res.status(StatusCodes.OK).json({ msg: 'update user' });
 };
