@@ -23,8 +23,6 @@ export const action = async ({ request }) => {
 
 const AddJob = () => {
   const { user } = useOutletContext();
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
 
   return (
     <Wrapper>
@@ -40,8 +38,6 @@ const AddJob = () => {
             defaultValue={user.location}
           />
         
-
-
         <FormRowSelect 
         labelText='job status' 
         name='jobStatus' 
@@ -56,13 +52,7 @@ const AddJob = () => {
         list={Object.values(JOB_TYPE)} 
         />
 
-          <button
-            type='submit'
-            className='btn btn-block form-btn '
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'submitting' : 'submit'}
-          </button>
+
         </div>
       </Form>
     </Wrapper>
