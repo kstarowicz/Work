@@ -1,7 +1,12 @@
 import Job from '../models/JobModel.js';
 import { StatusCodes } from 'http-status-codes';
-import { NotFoundError } from '../errors/customError.js';
+import mongoose from 'mongoose';
+import day from 'dayjs';
+//import { NotFoundError } from '../errors/customError.js';
 //import express from 'express';
+
+
+
 
 export const getAllJobs = async (req, res) => {
   const jobs = await Job.find({ createdBy: req.user.userId });
@@ -31,6 +36,28 @@ export const deleteJob = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: 'job deleted', job: removedJob });
 };
 
+export const showStats = async (req, res) => {
+  const defaultStats = {
+    pending: 22,
+    interview: 11,
+    declined: 4,
+  };
+  let monthlyApplications = [
+    {
+      date: 'May 23',
+      count: 12,
+    },
+    {
+      date: 'Jun 23',
+      count: 9,
+    },
+    {
+      date: 'Jul 23',
+      count: 3,
+    },
+  ];
+  res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
+}
 
 
 // if (!company || !position) {
