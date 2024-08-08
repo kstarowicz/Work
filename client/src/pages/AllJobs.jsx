@@ -8,9 +8,7 @@ import { useContext, createContext } from 'react';
 export const loader = async () => {
   try {
     const { data } = await customFetch.get('/jobs');
-    return {
-      data,
-    };
+    return {data};
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -22,7 +20,6 @@ const AllJobsContext = createContext()
 
 const AllJobs = () => {
   const { data } = useLoaderData();
-  console.log(data);
 
   return (
     <AllJobsContext.Provider value={{ data }}>
