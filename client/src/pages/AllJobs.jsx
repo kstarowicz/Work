@@ -13,8 +13,14 @@ const params = Object.fromEntries([
 
 
   try {
-    const { data } = await customFetch.get('/jobs');
-    return {data};
+    const { data } = await customFetch.get('/jobs', {
+      params,
+    });
+    
+    return {
+      data,
+      searchValues: { ...params },
+    };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -25,10 +31,10 @@ const params = Object.fromEntries([
 const AllJobsContext = createContext()
 
 const AllJobs = () => {
-  const { data } = useLoaderData();
+  const { data, searchValues } = useLoaderData();
 
   return (
-    <AllJobsContext.Provider value={{ data }}>
+    <AllJobsContext.Provider value={{ data, searchValues }}>
       <SearchContainer />
       <JobsContainer />
     </AllJobsContext.Provider>
